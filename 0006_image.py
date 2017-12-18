@@ -1,20 +1,16 @@
 import pygame
 
-screen_size = (width, height) = (640, 480)
+screenSize = (width, height) = (640, 480)
 
 WHITE = (255, 255, 255)
 
 pygame.init()
 
-screen = pygame.display.set_mode(screen_size)
+screen = pygame.display.set_mode(screenSize)
 pygame.display.set_caption("Png Image")
 
-sfera = pygame.image.load('./png/sfera_rossa.png')
-pos_sfera = (60, 400)
-
-screen.fill(WHITE)
-
-screen.blit(sfera, pos_sfera)
+sphere = pygame.image.load('./png/red_sphere.png')
+posSphere = (60, 480-64)
 
 done = False
 
@@ -22,6 +18,10 @@ while not done:
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
             done = True
+
+    screen.fill(WHITE)
+
+    screen.blit(sphere, posSphere)
 
     pygame.display.flip()
 
