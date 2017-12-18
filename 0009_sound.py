@@ -1,6 +1,6 @@
 import pygame
 
-screen_size = (640, 480)
+screenSize = (640, 480)
 
 FPS = 30
 
@@ -10,7 +10,7 @@ ORANGE = (234, 167, 65)
 
 pygame.init()
 
-screen = pygame.display.set_mode(screen_size)
+screen = pygame.display.set_mode(screenSize)
 pygame.display.set_caption("Sound")
 
 font = pygame.font.Font("freesansbold.ttf", 42)
@@ -21,10 +21,6 @@ textSurf = font.render("Can You Hear the Sounds?",
 textRect = textSurf.get_rect()
 textRect.centerx = screen.get_rect().centerx
 textRect.centery = screen.get_rect().centery
-
-screen.fill(WHITE)
-
-screen.blit(textSurf, textRect)
 
 # background music (forever loop)
 pygame.mixer.music.load('./music/JenyfaDuncan-Australia.ogg')
@@ -44,10 +40,14 @@ while not done:
         if event.type==pygame.QUIT:
             done = True
 
+    screen.fill(WHITE)
+
+    screen.blit(textSurf, textRect)
+
     counter += 1
     if counter % (FPS*5) == 0:
         laser.play()
-    
+
     pygame.display.flip()
 
     clock.tick(FPS)
