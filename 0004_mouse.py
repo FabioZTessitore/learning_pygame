@@ -8,6 +8,7 @@ SCREENSIZE = (640, 480)
 
 BGCOLOR = (255, 255, 255)
 BLACK = (0, 0, 0)
+GREEN = (0, 255, 0)
 
 pygame.init()
 
@@ -16,10 +17,13 @@ pygame.display.set_caption("Mouse Events")
 
 # on first click store mouse coords
 # on second click store the line
-second_click = False
+secondClick = False
 
 # no lines at startup
 lines = []
+
+# current line, on mouse motion
+currentLine = []
 
 done = False
 
@@ -31,18 +35,32 @@ while not done:
             done = True
 
         # mouse events
+        # click handler
         if event.type == pygame.MOUSEBUTTONDOWN:
-            if second_click:
+            if secondClick:
                 # store line
                 lines.append( (position, event.pos) )
+                # clear current line
+                currentLine = []
                 #
-                second_click = False
+                secondClick = False
             else:
                 # first click,
                 # store mouse coords
                 position = event.pos
+                # set first point of current line
+                currentLine.append(position)
+                # on click, current line is a point
+                currentLine.append(position)
                 # flag to second click
-                second_click = True
+                secondClick = True
+        # mouse motion handler
+        if event.type == pygame.MOUSEMOTION:
+            # waiting for second click
+            # update line end
+            if secondClick:
+                currentLine[1] = event.pos
+
 
     # clear the screen
     screen.fill(BGCOLOR)
@@ -50,6 +68,10 @@ while not done:
     # draw the lines
     for line in lines:
         pygame.draw.line(screen, BLACK, line[0], line[1])
+
+    # draw current line
+    if secondClick:
+        pygame.draw.line(screen, GREEN, currentLine[0], currentLine[1])
 
     pygame.display.flip()
 
