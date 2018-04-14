@@ -1,22 +1,32 @@
+# 0001_screen.py
+
+# open a window and
+# handle QUIT event
+
 import pygame
 
 pygame.init()
 
-screenSize = (640, 480)
-WHITE = (255, 255, 255)
+SCREENSIZE = (640, 480)
+BGCOLOR = (255, 255, 255)
 
-screen = pygame.display.set_mode(screenSize)
+# the window
+screen = pygame.display.set_mode(SCREENSIZE)
 pygame.display.set_caption("A Simple Window")
 
 done = False
 
+# game loop
 while not done:
+    # events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
 
-    screen.fill(WHITE)
+    # redraw
+    screen.fill(BGCOLOR)
 
+    # screen flip
     pygame.display.flip()
 
 pygame.quit()
