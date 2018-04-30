@@ -15,9 +15,11 @@ pygame.display.set_caption("Png Image")
 
 # load an image (64x64 pixels)
 sphere = pygame.image.load('./png/red_sphere.png')
-
+# calculate sphere dimensions
+sphereRect = sphere.get_rect()
+(sphereWidth, sphereHeight) = (sphereRect.width, sphereRect.height)
 # sphere position (bottom right)
-spherePos = (WIDTH-64, HEIGHT-64)
+spherePos = (WIDTH-sphereWidth, HEIGHT-sphereHeight)
 
 done = False
 
