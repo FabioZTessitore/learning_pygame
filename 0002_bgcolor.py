@@ -23,11 +23,10 @@ while not done:
         if event.type == pygame.QUIT:
             done = True
 
-    # change red amount
-    # with Arrow Key Up/Down
+    # change the red amount
+    # pressing Arrow Key Up/Down
     #
-    # get_pressed() return a map
-    # of pressed keys
+    # get_pressed() return a map of pressed keys
     keys = pygame.key.get_pressed()
     # more red
     if keys[pygame.K_UP]:
@@ -40,8 +39,6 @@ while not done:
         if redAmount < 0:
             redAmount = 0
 
-
-    # logic
     # recalculate bg color
     # with current red amount
     BGCOLOR = (redAmount, 0, 0)

@@ -26,7 +26,7 @@ textSurf = font.render(
         BLUE                # background color
 )
 # set text position
-# set text center to screen center
+# set "text center" to "screen center"
 textRect = textSurf.get_rect()
 textRect.centerx = screen.get_rect().centerx
 textRect.centery = screen.get_rect().centery

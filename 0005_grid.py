@@ -1,6 +1,6 @@
 # 0005_grid.py
 
-# draw a (dynamic) grid
+# draw a (dynamic) grid, mouse wheel
 
 import pygame
 

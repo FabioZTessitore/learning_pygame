@@ -1,6 +1,6 @@
 # 0013_button2.py
 
-# an interactive button
+# an interactive button, part 2/2
 
 import pygame
 

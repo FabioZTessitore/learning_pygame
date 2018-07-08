@@ -17,7 +17,7 @@ pygame.display.set_caption("Mouse Events")
 
 # on first click store mouse coords
 # on second click store the line
-secondClick = False
+waitingForSecondClick = False
 
 # no lines at startup
 lines = []
@@ -37,13 +37,13 @@ while not done:
         # mouse events
         # click handler
         if event.type == pygame.MOUSEBUTTONDOWN:
-            if secondClick:
-                # store line
+            if waitingForSecondClick:
+                # second click happened, store the line
                 lines.append( (position, event.pos) )
                 # clear current line
                 currentLine = []
-                #
-                secondClick = False
+                # clear
+                waitingForSecondClick = False
             else:
                 # first click,
                 # store mouse coords
@@ -52,13 +52,13 @@ while not done:
                 currentLine.append(position)
                 # on click, current line is a point
                 currentLine.append(position)
-                # flag to second click
-                secondClick = True
+                # flag, waiting for second click
+                waitingForSecondClick = True
+
         # mouse motion handler
         if event.type == pygame.MOUSEMOTION:
-            # waiting for second click
-            # update line end
-            if secondClick:
+            # if waiting for second click, update line end
+            if waitingForSecondClick:
                 currentLine[1] = event.pos
 
 
@@ -70,7 +70,7 @@ while not done:
         pygame.draw.line(screen, BLACK, line[0], line[1])
 
     # draw current line
-    if secondClick:
+    if waitingForSecondClick:
         pygame.draw.line(screen, GREEN, currentLine[0], currentLine[1])
 
     pygame.display.flip()

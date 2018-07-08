@@ -1,3 +1,3 @@
-# learning_pygame
+### package pygame.learning.fzt.com
 
-... work in progress ...
+# learning_pygame
