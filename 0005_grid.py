@@ -9,36 +9,45 @@ SCREENSIZE = (640, 480)
 BGCOLOR = (255, 255, 255)
 BLACK = (0, 0, 0)
 
-# starting row and columns.
+# starting number of rows and columns.
 # they change on scrolling the mouse wheel
 nRow = 3
 nCol = 3
 
 # where are horizontal lines?
-# es nRow = 3
-# --------------
-# 1
-# --------------
-# 2
-# --------------
-# 3
-# --------------
-# first is at 0
-# last is at height
+# ex. nRow = 3
+# --------------     -- 0 (not drawn)
+# 1                  -- 1/3 ht
+# --------------     -- 1px
+# 2                  -- 1/3 ht
+# --------------     -- 1px
+# 3                  -- 1/3 ht
+# --------------     -- SCREENSIZE[1]-1 (not drawn)
+#
 # (Note: width and height are smaller
 # then SCREENSIZE[0] and SCREENSIZE[1]
 # cause of grid lines)
-# the other two are after 1/3 and 2/3 of height
+#
+# Row height is 1/3 of available height (SCREENSIZE[1] - 1px * (nRow-1))
+#
 # Note: first and last will not be drawn.
 # first will be deleted
 # last will not be considered by for loop
 width = SCREENSIZE[0] - (nCol - 1)
 height = SCREENSIZE[1] - (nRow - 1)
-posRow = range(0, height, height/nRow)
+#
+# set row positions
+posRow = []
+for i in range(nRow):
+    posRow.append( i*(height/nRow) + i - 1 )
 del posRow[0]   # do not draw first line
-# vertical lines
-posCol = range(0, width, width/nCol)
+#print posRow
+# set col positions
+posCol = []
+for i in range(nCol):
+    posCol.append( i*(width/nCol) + i - 1 )
 del posCol[0]   # do not draw first line
+#print posCol
 
 pygame.init()
 
@@ -76,21 +85,28 @@ while not done:
     # recreate the grid
     width = SCREENSIZE[0] - (nCol - 1)
     height = SCREENSIZE[1] - (nRow - 1)
-    posRow = range(0, height, height/nRow)
+    # set row positions
+    posRow = []
+    for i in range(nRow):
+        posRow.append( i*(height/nRow) + i - 1 )
     del posRow[0]   # do not draw first line
-    posCol = range(0, width, width/nCol)
+    #print posRow
+    # set col positions
+    posCol = []
+    for i in range(nCol):
+        posCol.append( i*(width/nCol) + i - 1 )
     del posCol[0]   # do not draw first line
+    #print posCol
 
     # clear the screen
     screen.fill(BGCOLOR)
 
     # draw horizontal lines
-    for counter, i in enumerate(posRow):
-        pygame.draw.line(screen, BLACK, (0, counter+i), (SCREENSIZE[0], counter+i))
-
+    for r in posRow:
+        pygame.draw.line(screen, BLACK, (0, r), (SCREENSIZE[0]-1, r))
     # draw vertical lines
-    for counter, i in enumerate(posCol):
-        pygame.draw.line(screen, BLACK, (counter+i, 0), (counter+i, SCREENSIZE[1]))
+    for c in posCol:
+        pygame.draw.line(screen, BLACK, (c, 0), (c, SCREENSIZE[1]-1))
 
     pygame.display.flip()
 

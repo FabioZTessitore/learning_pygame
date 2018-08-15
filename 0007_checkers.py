@@ -15,20 +15,23 @@ RED = (255, 0, 0)
 nRow = 3
 nCol = 3
 
-# for an explanation of
-# the grid algorithm
+# for an explanation of the grid algorithm
 # see 0005_grid.py
 width = SCREENSIZE[0] - (nCol - 1)
 height = SCREENSIZE[1] - (nRow - 1)
-posRow = range(0, height, height/nRow)
+posRow = []
+for i in range(nRow):
+    posRow.append( i*(height/nRow) + i - 1 )
 del posRow[0]   # do not draw first line
-# vertical lines
-posCol = range(0, width, width/nCol)
+# set col positions
+posCol = []
+for i in range(nCol):
+    posCol.append( i*(width/nCol) + i - 1 )
 del posCol[0]   # do not draw first line
 
 # cell dimensions
-dimRow = posRow[1] - posRow[0]
-dimCol = posCol[1] - posCol[0]
+dimRow = height / nRow
+dimCol = width / nCol
 
 # the ball
 indexBall = (2, 2)
@@ -38,7 +41,7 @@ posBall = ( int(dimCol * (indexBall[0]+.5) - dimBall[0] * .5),
 
 pygame.init()
 screen = pygame.display.set_mode(SCREENSIZE)
-pygame.display.set_caption("Item into a checkers")
+pygame.display.set_caption("Item onto a checkers")
 
 done = False
 
@@ -71,19 +74,22 @@ while not done:
     # recreate the grid
     width = SCREENSIZE[0] - (nCol - 1)
     height = SCREENSIZE[1] - (nRow - 1)
-    print 'width', width
-    print 'SCREENSIZE[0]', SCREENSIZE[0]
-    posRow = range(0, height, height/nRow)
+    posRow = []
+    for i in range(nRow):
+        posRow.append( i*(height/nRow) + i - 1 )
     del posRow[0]   # do not draw first line
-    posCol = range(0, width, width/nCol)
+    # set col positions
+    posCol = []
+    for i in range(nCol):
+        posCol.append( i*(width/nCol) + i - 1 )
     del posCol[0]   # do not draw first line
-    
+
     # update cell dimensions
-    dimRow = posRow[1] - posRow[0]
-    dimCol = posCol[1] - posCol[0]
+    dimRow = height / nRow
+    dimCol = width / nCol
     print "dimRow", dimRow
     print "dimCol", dimCol
-    
+
     # update ball dimensions and position
     dimBall = ( int(dimCol * .75), int(dimRow * .75) )
     print "dimBall", dimBall
@@ -92,14 +98,13 @@ while not done:
     print "posBall", posBall
 
     screen.fill(BGCOLOR)
-    
-    # draw horizontal lines
-    for counter, i in enumerate(posRow):
-        pygame.draw.line(screen, BLACK, (0, counter+i), (SCREENSIZE[0], counter+i))
 
+    # draw horizontal lines
+    for r in posRow:
+        pygame.draw.line(screen, BLACK, (0, r), (SCREENSIZE[0]-1, r))
     # draw vertical lines
-    for counter, i in enumerate(posCol):
-        pygame.draw.line(screen, BLACK, (counter+i, 0), (counter+i, SCREENSIZE[1]))
+    for c in posCol:
+        pygame.draw.line(screen, BLACK, (c, 0), (c, SCREENSIZE[1]-1))
 
     # draw the ball
     pygame.draw.ellipse(screen, RED, (posBall[0], posBall[1], dimBall[0], dimBall[1]))

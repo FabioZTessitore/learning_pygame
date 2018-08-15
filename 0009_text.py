@@ -28,8 +28,9 @@ textSurf = font.render(
 # set text position
 # set "text center" to "screen center"
 textRect = textSurf.get_rect()
-textRect.centerx = screen.get_rect().centerx
-textRect.centery = screen.get_rect().centery
+#textRect.centerx = screen.get_rect().centerx
+#textRect.centery = screen.get_rect().centery
+textRect.center = screen.get_rect().center
 
 done = False
 

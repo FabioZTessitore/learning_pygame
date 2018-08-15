@@ -27,9 +27,9 @@ lines.append( (lineStart, lineEnd) )
 
 # next lines
 for i in range(9):
-    xi += 10
-    xf -= 10
-    y += 30
+    xi += 10        # a little smaller
+    xf -= 10        #
+    y += 30         # up 30px
     lineStart = (xi, y)
     lineEnd = (xf, y)
     lines.append( (lineStart, lineEnd) )
