@@ -2,6 +2,8 @@
 
 # memory game
 
+# draw the area of the board
+
 import pygame
 import sys
 

@@ -2,6 +2,8 @@
 
 # memory game
 
+# handle click events
+
 import pygame
 import sys
 
@@ -68,11 +70,19 @@ while not done:
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             print "click at ", event.pos
-            for x in range(BOARD_HEIGHT):
-                for y in range(BOARD_WIDTH):
-                    if XMARGIN+GAPSIZE/2+(GAPSIZE + BOXSIZE)*y < event.pos[0] < XMARGIN+GAPSIZE/2+(GAPSIZE + BOXSIZE)*y + BOXSIZE and \
-                        YMARGIN+GAPSIZE/2+(GAPSIZE + BOXSIZE)*x < event.pos[1] < YMARGIN+GAPSIZE/2+(GAPSIZE + BOXSIZE)*x + BOXSIZE:
-                        print (x, y)
+            (x, y) = event.pos
+            x -= XMARGIN
+            y -= YMARGIN
+            x /= float(BOXSIZE+GAPSIZE)
+            y /= float(BOXSIZE+GAPSIZE)
+            x_int = int(x)
+            y_int = int(y)
+            x -= x_int
+            y -= y_int
+            if 0.5*GAPSIZE/(GAPSIZE+BOXSIZE) < x < (0.5*GAPSIZE+BOXSIZE)/(GAPSIZE+BOXSIZE) and \
+                0.5*GAPSIZE/(GAPSIZE+BOXSIZE) < y < (0.5*GAPSIZE+BOXSIZE)/(GAPSIZE+BOXSIZE):
+                print x_int, y_int
+                print x, y
 
     screen.fill(BGCOLOR)
 
