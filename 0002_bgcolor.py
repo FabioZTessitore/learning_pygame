@@ -7,6 +7,7 @@ import pygame
 pygame.init()
 
 SCREENSIZE = (640, 480)
+
 redAmount = 0
 BGCOLOR = (redAmount, 0, 0)
 
