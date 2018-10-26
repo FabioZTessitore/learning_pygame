@@ -15,24 +15,8 @@ GREEN = (0, 255, 0)
 screen = pygame.display.set_mode(SCREENSIZE)
 pygame.display.set_caption("Lines and Rects")
 
-# lines
-lines = []
-# first line starts at (20, 100) and ends at (620, 100)
-xi = 20
-xf = 620
-y = 100
-lineStart = (xi, y)
-lineEnd = (xf, y)
-lines.append( (lineStart, lineEnd) )
-
-# next lines
-for i in range(9):
-    xi += 10        # a little smaller
-    xf -= 10        #
-    y += 30         # up 30px
-    lineStart = (xi, y)
-    lineEnd = (xf, y)
-    lines.append( (lineStart, lineEnd) )
+lineStart = (20, 100)
+lineEnd = (420, 300)
 
 done = False
 
@@ -46,10 +30,9 @@ while not done:
     # clear the screen
     screen.fill(BGCOLOR)
 
-    # draw the lines
+    # draw the line
     # pygame.draw.lines(screen, Color, (x, y), (x, y))
-    for line in lines:
-        pygame.draw.line(screen, GREEN, line[0], line[1])
+    pygame.draw.line(screen, GREEN, lineStart, lineEnd)
 
     # draw some rect(screen, Color, (x, y, width, height))
     pygame.draw.rect(screen, RED, (20, 20, 100, 20))
