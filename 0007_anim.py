@@ -1,4 +1,4 @@
-# 0010_anim.py
+# 0007_anim.py
 
 # animation
 
@@ -29,7 +29,7 @@ sphereRect = sphere.get_rect()
 sphereDx = 2
 sphereDy = 2
 
-# also write sphere position
+# also display sphere position
 #
 # font
 font = pygame.font.Font("freesansbold.ttf", 32)

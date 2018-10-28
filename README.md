@@ -10,6 +10,7 @@
 1. 0004_mouse:    Handle Mouse Events
 1. 0005_text:     Display Text
 1. 0006_image:    Display images
+1. 0007_anim:     Animating
 
 ## Projects
 
