@@ -1,4 +1,4 @@
-# 0004_mouse.py
+# 0002_mouse.py
 
 # draw lines with the mouse
 
