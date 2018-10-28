@@ -1,4 +1,4 @@
-# 0008_image.py
+# 0006_image.py
 
 # display an image
 
@@ -17,7 +17,7 @@ pygame.display.set_caption("Png Image")
 sphere = pygame.image.load('./png/red_sphere.png')
 # sphere rect
 sphereRect = sphere.get_rect()
-# sphere position (bottom right)
+# sphere position (bottom right of the screen)
 spherePos = (WIDTH-sphereRect.width, HEIGHT-sphereRect.height)
 
 done = False
