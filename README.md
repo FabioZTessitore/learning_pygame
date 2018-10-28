@@ -11,6 +11,7 @@
 1. 0005_text:     Display Text
 1. 0006_image:    Display images
 1. 0007_anim:     Animating
+1. 0008_pixel:    Edit Surface Pixels
 
 ## Projects
 
