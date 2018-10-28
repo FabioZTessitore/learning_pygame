@@ -1,4 +1,4 @@
-# 0009_text.py
+# 0005_text.py
 
 # display text
 
@@ -17,10 +17,9 @@ pygame.display.set_caption("Text")
 
 # import the font
 font = pygame.font.Font("freesansbold.ttf", 50)
-# make the text surface using
-# the selected font
+# make the text surface using the selected font
 textSurf = font.render(
-        "Hello, World!",    # string to show
+        "Hello, World!",    # string to display
         True,               # antialiasing
         ORANGE,             # foreground color
         BLUE                # background color

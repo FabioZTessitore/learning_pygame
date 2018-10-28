@@ -8,6 +8,7 @@
 1. 0002_bgcolor:  Handle key press
 1. 0003_draw:     Draw lines and rect
 1. 0004_mouse:    Handle Mouse Events
+1. 0005_text:     Display Text
 
 ## Projects
 
