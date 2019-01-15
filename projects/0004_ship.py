@@ -4,7 +4,7 @@
 #
 # T - C v = m a
 #
-# T     trust
+# T     thrust
 # C     drag coeff
 # v     speed
 # m     mass
@@ -33,12 +33,12 @@ y = 0
 # ship velocity
 v0 = 0.
 v = v0
-# ship trust
+# ship thrust
 T = 0.       # N
 # ship mass
 M = 500.    #Kg
 # drag coeff
-C = 100.
+C = 15
 # time step
 dt = 1./FPS
 
@@ -68,8 +68,8 @@ ys = int(240 * (y + 1))
 font = pygame.font.Font("freesansbold.ttf", 16)
 # text
 textPositionSurf = font.render("Ship Position: (%d, %d)" % (xs, ys), True, BLACK, BGCOLOR)
-textSpeedSurf = font.render("Ship Speed: %6.2f" % (v,), True, BLACK, BGCOLOR)
-textTrustSurf = font.render("Ship Trust: %6.2f" % (T,), True, BLACK, BGCOLOR)
+textSpeedSurf = font.render("Ship Speed: %6.2f m/s (%.1f Km/h)" % (v, v*3.6), True, BLACK, BGCOLOR)
+textThrustSurf = font.render("Ship Thrust: %6.2f" % (T,), True, BLACK, BGCOLOR)
 # position
 textPositionRect = textPositionSurf.get_rect()
 textPositionRect.x = 20
@@ -77,9 +77,9 @@ textPositionRect.y = 20
 textSpeedRect = textSpeedSurf.get_rect()
 textSpeedRect.x = 20
 textSpeedRect.y = 40
-textTrustRect = textTrustSurf.get_rect()
-textTrustRect.x = 20
-textTrustRect.y = 60
+textThrustRect = textThrustSurf.get_rect()
+textThrustRect.x = 20
+textThrustRect.y = 60
 
 # init the clock
 clock = pygame.time.Clock()
@@ -97,11 +97,11 @@ while not done:
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT]:
-        T += 10
-        if T > 1500:
-            T = 1500
+        T += 15
+        if T > 105:
+            T = 105
     elif keys[pygame.K_RIGHT]:
-        T -= 10
+        T -= 15
         if T < 0:
             T = 0.
 
@@ -121,13 +121,13 @@ while not done:
     xs = int(640. * x/100.)
     ys = int(240 * (y + 1))
 
-    if x > 95:
-        x = 0
+    if x > 90:
+        x = 10
 
     # set text
     textPositionSurf = font.render("Ship Position: (%d, %d)" % (xs, ys), True, BLACK, BGCOLOR)
-    textSpeedSurf = font.render("Ship Speed: %6.2f" % (v,), True, BLACK, BGCOLOR)
-    textTrustSurf = font.render("Ship Trust: %6.2f" % (T,), True, BLACK, BGCOLOR)
+    textSpeedSurf = font.render("Ship Speed: %6.2f m/s (%.1f Km/h)" % (v, v*3.6), True, BLACK, BGCOLOR)
+    textThrustSurf = font.render("Ship Thrust: %6.2f" % (T,), True, BLACK, BGCOLOR)
 
     screen.fill(BGCOLOR)
 
@@ -137,7 +137,7 @@ while not done:
     # blit the text
     screen.blit(textPositionSurf, textPositionRect)
     screen.blit(textSpeedSurf, textSpeedRect)
-    screen.blit(textTrustSurf, textTrustRect)
+    screen.blit(textThrustSurf, textThrustRect)
 
     pygame.display.flip()
 
