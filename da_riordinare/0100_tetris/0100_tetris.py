@@ -5,7 +5,11 @@ from board import Board
 
 BGCOLOR = WHITE
 
-SCREENSIZE = (WIDTH, HEIGHT) = (Block.BLOCK_SIZE * Board.BOARD_WIDTH, Block.BLOCK_SIZE * Board.BOARD_HEIGHT)
+BLOCK_SIZE = 30
+BOARD_WIDTH = 10
+BOARD_HEIGHT = 20
+
+SCREENSIZE = (WIDTH, HEIGHT) = (BLOCK_SIZE*BOARD_WIDTH, BLOCK_SIZE*BOARD_HEIGHT)
 
 FPS = 30
 dt = FPS * 2
@@ -20,7 +24,7 @@ clock = pygame.time.Clock()
 
 done = False
 
-board = Board()
+board = Board(BOARD_WIDTH, BOARD_HEIGHT, BLOCK_SIZE)
 
 while not done:
     for event in pygame.event.get():
