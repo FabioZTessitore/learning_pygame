@@ -2,21 +2,19 @@
 
 # key press events
 
-# reduce the red amount
-def reduceRedAmount(redAmount, redVariation):
-    redAmount -= redVariation
-    if redAmount < 0:
-        redAmount = 0
+def reduceAmount(amount, variation):
+    amount -= variation
+    if amount < 0:
+        amount = 0
 
-    return redAmount
+    return amount
 
-# increase the red amount
-def increaseRedAmount(redAmount, redVariation):
-    redAmount += redVariation
-    if redAmount > 255:
-        redAmount = 255
+def increaseAmount(amount, variation):
+    amount += variation
+    if amount > 255:
+        amount = 255
 
-    return redAmount
+    return amount
 
 
 import pygame
@@ -66,10 +64,10 @@ while not done:
     keys = pygame.key.get_pressed()
 
     if keys[pygame.K_UP]:
-        redAmount = increaseRedAmount(redAmount, redVariation)
+        redAmount = increaseAmount(redAmount, redVariation)
 
     if keys[pygame.K_DOWN]:
-        redAmount = reduceRedAmount(redAmount, redVariation)
+        redAmount = reduceAmount(redAmount, redVariation)
 
     # recalculate bg color with current red amount
     BGCOLOR = (redAmount, 0, 0)

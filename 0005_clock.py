@@ -5,7 +5,6 @@
 import pygame
 
 pygame.init()
-clock = pygame.time.Clock()
 
 SCREENSIZE = (640, 480)
 
@@ -15,6 +14,9 @@ BGCOLOR = (redAmount, 0, 0)
 windowSurface = pygame.display.set_mode(SCREENSIZE)
 
 pygame.display.set_caption("Animated BG Color")
+
+# init the clock
+clock = pygame.time.Clock()
 
 done = False
 

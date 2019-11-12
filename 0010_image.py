@@ -21,8 +21,9 @@ pygame.display.set_caption("Png Image")
 sphere = pygame.image.load('./png/red_sphere.png')
 # sphere rect
 sphereRect = sphere.get_rect()
-# sphere position (bottom right of the screen)
-spherePos = (WIDTH-sphereRect.width, HEIGHT-sphereRect.height)
+# set sphere position (bottom right of the screen)
+sphereRect.bottom = HEIGHT
+sphereRect.right = WIDTH
 
 # init the clock
 clock = pygame.time.Clock()
@@ -39,7 +40,7 @@ while not done:
     windowSurface.fill(BGCOLOR)
 
     # blit the image
-    windowSurface.blit(sphere, spherePos)
+    windowSurface.blit(sphere, sphereRect)
 
     pygame.display.update()
 

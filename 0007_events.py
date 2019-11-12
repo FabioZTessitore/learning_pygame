@@ -2,21 +2,19 @@
 
 # mouse and keyboard events
 
-# reduce the red amount
-def reduceRedAmount(redAmount, redVariation):
-    redAmount -= redVariation
-    if redAmount < 0:
-        redAmount = 0
+def reduceAmount(amount, variation):
+    amount -= variation
+    if amount < 0:
+        amount = 0
 
-    return redAmount
+    return amount
 
-# increase the red amount
-def increaseRedAmount(redAmount, redVariation):
-    redAmount += redVariation
-    if redAmount > 255:
-        redAmount = 255
+def increaseAmount(amount, variation):
+    amount += variation
+    if amount > 255:
+        amount = 255
 
-    return redAmount
+    return amount
 
 
 import pygame
@@ -65,16 +63,16 @@ while not done:
         # mouse events
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.pos[0] < WIDTH/2:
-                redAmount = reduceRedAmount(redAmount, redVariation)
+                redAmount = reduceAmount(redAmount, redVariation)
             else:
-                redAmount = increaseRedAmount(redAmount, redVariation)
+                redAmount = increaseAmount(redAmount, redVariation)
         
         # keyboard events
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_DOWN:
-                redAmount = reduceRedAmount(redAmount, redVariation)
+                redAmount = reduceAmount(redAmount, redVariation)
             elif event.key == pygame.K_UP:
-                redAmount = increaseRedAmount(redAmount, redVariation)
+                redAmount = increaseAmount(redAmount, redVariation)
 
     # recalculate bg color with current red amount
     BGCOLOR = (redAmount, 0, 0)

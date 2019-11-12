@@ -26,10 +26,10 @@ textSurface = font.render(
         BLUE                # background color
 )
 # set text position
-# set "text center" to "screen center"
+# set "text center" to "windowSurface center"
 textRect = textSurface.get_rect()
-# textRect.centerx = screen.get_rect().centerx
-# textRect.centery = screen.get_rect().centery
+# textRect.centerx = windowSurface.get_rect().centerx
+# textRect.centery = windowSurface.get_rect().centery
 textRect.center = windowSurface.get_rect().center
 
 # fill the window surface with the background color, just once
