@@ -26,7 +26,7 @@ done = False
 
 # game loop
 while not done:
-    # events
+    events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True

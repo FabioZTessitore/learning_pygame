@@ -15,12 +15,10 @@ BLUE = (0, 0, 255)
 MAGENTA = (255, 0, 255)
 
 windowSurface = pygame.display.set_mode(SCREENSIZE)
-
 pygame.display.set_caption("Lines, Rects, Circles, Ellipses")
 
 # fill the window surface with the background color,
-# then draw some figures,
-# just once
+# then draw some figures, just once
 windowSurface.fill(BGCOLOR)
 
 # pygame.draw.lines(windowSurface, Color, (startX, startY), (endX, endY))
@@ -34,7 +32,6 @@ pygame.draw.ellipse(windowSurface, MAGENTA, (300, 250, 40, 80), 1)
 
 # draw the window surface onto the screen
 pygame.display.update()
-
 
 done = False
 
